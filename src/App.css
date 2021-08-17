@@ -1,38 +1,109 @@
-.App {
+.cell {
+  padding: 10px;
+  font-size: 25px;
+  height: 50px;
+  width: 50px;
+  vertical-align: middle;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.App {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
+  background-color: #fafafa;
+}
+
+.menu {
+  position: fixed;
+  height: 30px;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.menu a {
+  padding: 10px;
+  text-decoration: none;
+  color: #123;
+}
+
+.menu a:hover {
+  background-color: #eee;
+}
+
+.activeLink {
+  background-color: #c4d1de;
+}
+
+.question {
+  font-size: 50px;
+}
+
+.quizz-container {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  flex-grow: 1;
+}
+
+.quizz-container input {
+  border: none;
+  width: 200px;
+  padding: 20px;
+  font-size: 30px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
+
+.time {
+  color: #888;
+}
+
+.mul {
+  font-size: 15px;
+  color: #888;
+}
+
+.darkCell {
+  background-color: #fefefe;
+}
+
+th {
+  background-color: #ddd;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.restartButton {
+  background-color: #3c6b9a;
+  color: white;
+  padding: 10px 20px;
+  font-size: 30px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.restartButton:hover {
+  background-color: #3c638a;
+}
+
+.restartButton:active {
+  background-color: #0c243c;
+}
+
+.highscore {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+  min-width: 200px;
+}
+
+.score {
+  padding: 10px 15px;
 }
