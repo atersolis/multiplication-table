@@ -1,10 +1,10 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const pickNumber = (numbers: number[]): number => {
   return numbers[Math.floor(Math.random() * numbers.length)];
 };
 
-const numbers1 = [2, 3, 4, 5, 6, 7, 8, 9];
+const numbers1 = [/*2, 3, 4, 5, */ 6, 7, 8 /* 9 */];
 const numbers2 = numbers1;
 
 const QUIZZ_SIZE = 30;
@@ -18,6 +18,7 @@ export const Quizz = () => {
   const [done, setDone] = useState(false);
   const [scores, setScores] = useState<number[]>([]);
   const scoreRef = useRef<number | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
 
   const finish = () => {
     timer.stop();
@@ -69,6 +70,10 @@ export const Quizz = () => {
     return parseInt(number) === randomNumber1 * randomNumber2;
   };
 
+  useEffect(() => {
+    inputRef?.current?.focus();
+  }, []);
+
   if (done) {
     return (
       <div className="quizz-container">
@@ -106,9 +111,14 @@ export const Quizz = () => {
         {count} / {QUIZZ_SIZE} - {formatDuration(timer.elapsedTimeInSeconds)}
       </div>
       <div className="question">
-        <span>{randomNumber1}</span>×<span>{randomNumber2}</span>
+        <span>{randomNumber1}</span> <span style={{ color: "#888" }}>×</span>{" "}
+        <span>{randomNumber2}</span>
       </div>
-      <input value={number} onChange={(e) => onChange(e.target.value)} />
+      <input
+        ref={inputRef}
+        value={number}
+        onChange={(e) => onChange(e.target.value)}
+      />
     </div>
   );
 };
@@ -178,5 +188,8 @@ const registerScore = (score: number) => {
   const scores = getHighscore();
   scores.push(score);
   scores.sort((a, b) => b - a);
-  localStorage.setItem("highscore", JSON.stringify(scores.slice(0, 10)));
+  localStorage.setItem(
+    "highscore",
+    JSON.stringify(Array.from(new Set(scores)).slice(0, 10))
+  );
 };
