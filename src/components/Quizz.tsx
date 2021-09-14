@@ -4,7 +4,7 @@ const pickNumber = (numbers: number[]): number => {
   return numbers[Math.floor(Math.random() * numbers.length)];
 };
 
-const numbers1 = [/*2, 3, 4, 5, */ 6, 7, 8 /* 9 */];
+const numbers1 = [2, 3, 4, 5, 6, 7, 8, 9];
 const numbers2 = numbers1;
 
 const QUIZZ_SIZE = 30;
